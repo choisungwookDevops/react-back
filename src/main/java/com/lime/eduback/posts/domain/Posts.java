@@ -1,17 +1,16 @@
 package com.lime.eduback.posts.domain;
 
-import lombok.AccessLevel;
+import javafx.scene.chart.ChartBuilder;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name="posts")
-public class Posts {
+@NoArgsConstructor
+@Entity
+public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +22,11 @@ public class Posts {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    private LocalDateTime regDate;
-
     @Builder
-    public Posts(Long id, String title, String content, LocalDateTime regDate) {
+    public Posts(Long id, String title, String content) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.regDate = regDate;
     }
 
     public void update(String title, String content) {

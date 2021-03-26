@@ -19,7 +19,7 @@ public class PostsService {
 
     public Posts findById(Long id) {
         Posts posts = postsRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
         return posts;
     };
 
@@ -27,5 +27,9 @@ public class PostsService {
     public List<Posts> findAll() {
         return postsRepository.findAll().stream()
                 .collect(Collectors.toList());
+    };
+
+    public Long save(Posts posts) {
+        return postsRepository.save(posts).getId();
     }
 }

@@ -11,13 +11,6 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
-    private DataSource dataSource;
-
-    @Autowired
-    public SpringConfig(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
     @Bean PostsService postsService(PostsRepository postsRepository) {
         return new PostsService(postsRepository);
     }
