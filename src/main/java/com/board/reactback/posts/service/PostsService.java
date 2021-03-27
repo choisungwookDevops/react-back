@@ -18,6 +18,7 @@ public class PostsService {
         this.postsRepository = postsRepository;
     }
 
+    @Transactional(readOnly = true)
     public Posts findById(Long id) {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
