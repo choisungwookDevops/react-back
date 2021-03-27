@@ -1,11 +1,14 @@
-package com.lime.eduback.posts.domain;
+package com.board.reactback.posts.domain;
 
-import javafx.scene.chart.ChartBuilder;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 @Data
 @NoArgsConstructor

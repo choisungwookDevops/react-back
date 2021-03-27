@@ -1,12 +1,10 @@
-package com.lime.eduback;
+package com.board.reactback;
 
-import com.lime.eduback.posts.repository.PostsRepository;
-import com.lime.eduback.posts.service.PostsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.sql.DataSource;
+import com.board.reactback.posts.repository.PostsRepository;
+import com.board.reactback.posts.service.PostsService;
 
 @Configuration
 public class SpringConfig {

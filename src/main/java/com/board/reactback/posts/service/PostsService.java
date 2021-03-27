@@ -1,12 +1,13 @@
-package com.lime.eduback.posts.service;
-
-import com.lime.eduback.posts.domain.Posts;
-import com.lime.eduback.posts.repository.PostsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+package com.board.reactback.posts.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.board.reactback.posts.domain.Posts;
+import com.board.reactback.posts.repository.PostsRepository;
 
 public class PostsService {
 
@@ -29,7 +30,24 @@ public class PostsService {
                 .collect(Collectors.toList());
     };
 
+    @Transactional
     public Long save(Posts posts) {
         return postsRepository.save(posts).getId();
     }
+
+    @Transactional
+    public Long update(Long id, Posts posts) {
+        Posts postsData = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+        postsData.update(posts.getTitle(), posts.getContent());
+        return id;
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+        postsRepository.delete(posts);
+    }
+
 }

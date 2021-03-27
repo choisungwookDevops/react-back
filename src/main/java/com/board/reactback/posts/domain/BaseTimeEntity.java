@@ -1,13 +1,15 @@
-package com.lime.eduback.posts.domain;
+package com.board.reactback.posts.domain;
 
-import lombok.Getter;
+import java.time.LocalDateTime;
+
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
-import java.time.LocalDateTime;
+import lombok.Getter;
 
 @Getter
 @MappedSuperclass // JPA Entity 클래스들이 BaseTimeEntity를 상속할 경우 필드들도 컬럼으로 인식하도록 함
