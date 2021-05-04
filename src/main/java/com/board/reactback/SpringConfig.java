@@ -16,19 +16,19 @@ import javax.sql.DataSource;
 @PropertySource("classpath:/application.properties")
 public class SpringConfig {
 
-    @Bean PostsService postsService(PostsRepository postsRepository) {
+    @Bean
+    PostsService postsService(PostsRepository postsRepository) {
         return new PostsService(postsRepository);
     }
 
     @Bean
-    @ConfigurationProperties(prefix="spring.datasource.hikari")
+    @ConfigurationProperties(prefix = "spring.datasource.hikari")
     public HikariConfig hikariConfig() {
         return new HikariConfig();
     }
 
-    //③
     @Bean
-    public DataSource dataSource() throws Exception {
+    public DataSource dataSource() {
         DataSource dataSource = new HikariDataSource(hikariConfig());
         System.out.println(dataSource.toString());
         return dataSource;
