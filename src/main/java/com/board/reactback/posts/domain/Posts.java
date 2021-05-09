@@ -8,9 +8,11 @@ import javax.persistence.Id;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
+@EqualsAndHashCode(callSuper=false)
 @NoArgsConstructor
 @Entity
 public class Posts extends BaseTimeEntity {
