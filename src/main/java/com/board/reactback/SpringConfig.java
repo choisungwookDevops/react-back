@@ -26,7 +26,7 @@ public class SpringConfig {
     public HikariConfig hikariConfig() {
         return new HikariConfig();
     }
-    
+
     //디비
     @Bean
     public DataSource dataSource() {
