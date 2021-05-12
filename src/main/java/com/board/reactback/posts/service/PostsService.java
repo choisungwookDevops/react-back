@@ -23,13 +23,13 @@ public class PostsService {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
         return posts;
-    };
+    }
 
     @Transactional(readOnly = true)
     public List<Posts> findAll() {
         return postsRepository.findAll().stream()
                 .collect(Collectors.toList());
-    };
+    }
 
     @Transactional
     public Long save(Posts posts) {
