@@ -49,15 +49,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2    
     
-#     - name: Download jar.zip file
-#       uses: actions/download-artifact@v2
-#       with:
-#         name: jar
+    - name: Download jar.zip file
+      uses: actions/download-artifact@v2
+      with:
+        name: jar
         
-#     - name: uncompress jar.zip
-#       run: |
-#         cd output
-#         tar xvf jar.zip
+    - name: uncompress jar.zip
+      run: |
+        cd output
+        tar xvf jar.zip
     
 #     # set docker image tag
 #     - name: set env
