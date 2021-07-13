@@ -33,14 +33,14 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
       
-    - name: copy jar
-      run: mkdir output && cp build/libs/*.jar output
+#     - name: copy jar
+#       run: mkdir output && cp build/libs/*.jar output
       
-    - name: upload jar.zip file
-      uses: actions/upload-artifact@v2
-      with:
-        name: jar
-        path: output
+#     - name: upload jar.zip file
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: jar
+#         path: output
         
 #   docker-build-push:
 #     runs-on: ubuntu-latest
