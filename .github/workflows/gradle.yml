@@ -30,47 +30,47 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew      
           
-    - name: Build with Gradle
-      run: ./gradlew build
+#     - name: Build with Gradle
+#       run: ./gradlew build
       
-    - name: copy jar
-      run: mkdir output && cp build/libs/*.jar output
+#     - name: copy jar
+#       run: mkdir output && cp build/libs/*.jar output
       
-    - name: upload jar.zip file
-      uses: actions/upload-artifact@v2
-      with:
-        name: jar
-        path: output
+#     - name: upload jar.zip file
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: jar
+#         path: output
         
-  docker-build-push:
-    runs-on: ubuntu-latest
-    needs: build
+#   docker-build-push:
+#     runs-on: ubuntu-latest
+#     needs: build
     
-    steps:
-    - uses: actions/checkout@v2    
+#     steps:
+#     - uses: actions/checkout@v2    
     
-    - name: Download jar.zip file
-      uses: actions/download-artifact@v2
-      with:
-        name: jar
+#     - name: Download jar.zip file
+#       uses: actions/download-artifact@v2
+#       with:
+#         name: jar
         
-    - name: uncompress jar.zip
-      run: |
-        cd output
-        tar xvf jar.zip
+#     - name: uncompress jar.zip
+#       run: |
+#         cd output
+#         tar xvf jar.zip
     
-    # set docker image tag
-    - name: set env
-      run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
+#     # set docker image tag
+#     - name: set env
+#       run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/v}" >> $GITHUB_ENV
       
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
+#     - name: Set up Docker Buildx
+#       uses: docker/setup-buildx-action@v1
       
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.CR_PAT }}
+#     - name: Login to GitHub Container Registry
+#       uses: docker/login-action@v1
+#       with:
+#         registry: ghcr.io
+#         username: ${{ github.repository_owner }}
+#         password: ${{ secrets.CR_PAT }}
     
 
