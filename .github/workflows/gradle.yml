@@ -30,11 +30,11 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew      
           
-#     - name: Build with Gradle
-#       run: ./gradlew build
+    - name: Build with Gradle
+      run: ./gradlew build
       
-#     - name: copy jar
-#       run: mkdir output && cp build/libs/*.jar output
+    - name: copy jar
+      run: mkdir output && cp build/libs/*.jar output
       
 #     - name: upload jar.zip file
 #       uses: actions/upload-artifact@v2
