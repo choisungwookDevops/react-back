@@ -56,7 +56,7 @@ jobs:
         
     - name: uncompress jar.zip
       run: |
-        cd output
+        ls
         tar xvf jar.zip
     
 #     # set docker image tag
