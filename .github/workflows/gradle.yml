@@ -3,17 +3,17 @@
 
 name: Java CI with Gradle
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-# reference: https://stackoverflow.com/questions/58177786/get-the-current-pushed-tag-in-github-actions/58178121#58178121
 # on:
 #   push:
-#     tags:
-#       - 'v*'
+#     branches: [ master ]
+#   pull_request:
+#     branches: [ master ]
+
+# reference: https://stackoverflow.com/questions/58177786/get-the-current-pushed-tag-in-github-actions/58178121#58178121
+on:
+  push:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   build:
@@ -74,4 +74,4 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/teamproject-backend-test:dev
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/teamproject-backend-test:${{ github.ref }}
