@@ -28,10 +28,10 @@ jobs:
         distribution: 'adopt'
         
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew --exclude-task test
+      run: chmod +x gradlew 
           
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build --exclude-task test
       
     - name: copy jar
       run: mkdir output && cp build/libs/*.jar output
