@@ -7,9 +7,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      image: "example"
+      tag: "dev"
+      
     steps:
       - uses: actions/checkout@v2
       
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: change helm template
+        run: |
+          sed -i "s/__IMAGENAME__/${{ env.image }}/g" target.yml
+          sed -i "s/__TAG__/${{ env.image }}/g" target.yml
