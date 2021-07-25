@@ -35,4 +35,4 @@ jobs:
           echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
           
       - name: Deploy app
-        run: helm upgrade ${{ env.appname }} --install --namespace ${{ env.namespace }} ./charts
+        run: helm upgrade ${{ env.appname }} --install --namespace ${{ env.namespace }} --kube-ca-file=${{ secrets.KUBERNETES_APICA }} ./charts
