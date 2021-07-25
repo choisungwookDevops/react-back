@@ -8,7 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      image: "choisunguk\/teamproject-backend-test"
+      author: "choisunguk"
+      image: "teamproject-backend-test"
       tag: "0.0.7"
       
     steps:
@@ -16,7 +17,7 @@ jobs:
       
       - name: change helm template
         run: |
-          sed -i "s/__IMAGENAME__/'${{ env.image }}'/g" charts/values.yaml
+          sed -i "s/__IMAGENAME__/${{ env.author }}\/${{ env.image }}/g" charts/values.yaml
           sed -i "s/__TAG__/'${{ env.tag }}'/g" charts/values.yaml
           cat charts/values.yaml
       
