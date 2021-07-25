@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      image: "choisunguk/teamproject-backend-test"
+      image: "choisunguk\/teamproject-backend-test"
       tag: "0.0.7"
       
     steps:
