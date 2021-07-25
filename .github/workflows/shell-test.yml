@@ -16,5 +16,5 @@ jobs:
       
       - name: change helm template
         run: |
-          sed -i "s/__IMAGENAME__/${{ env.image }}/g" target.yml
-          sed -i "s/__TAG__/${{ env.image }}/g" target.yml
+          sed -i "s/__IMAGENAME__/${{ env.image }}/g" charts/values.yaml
+          sed -i "s/__TAG__/${{ env.image }}/g" charts/values.yaml
