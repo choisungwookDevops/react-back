@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: choisunguk/teamproject-backend-test
+  repository: __IMAGENAME__
   pullPolicy: Alawys
   # Overrides the image tag whose default is the chart appVersion.
-  tag: dev
+  tag: __TAG__
 
 imagePullSecrets: []
 nameOverride: ""
