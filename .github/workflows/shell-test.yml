@@ -24,9 +24,10 @@ jobs:
       
       # reference: https://github.com/helm/chart-releaser-action
       - name: Install Helm
-        uses: azure/setup-helm@v1
-        with:
-          version: v3.4.0
+        run: |
+          curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+          chmod 700 get_helm.sh
+          /get_helm.sh
           
       - name: Copy config
         run: |
