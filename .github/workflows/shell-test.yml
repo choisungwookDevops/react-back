@@ -35,4 +35,4 @@ jobs:
           echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
           
       - name: Deploy app
-        run: helm upgrade ${{ env.appname }} --install --namespace ${{ env.namespace }}
+        run: helm upgrade ${{ env.appname }} --install --namespace ${{ env.namespace }} ./charts
