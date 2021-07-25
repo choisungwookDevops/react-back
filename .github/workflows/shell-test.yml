@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      image: "example"
-      tag: "dev"
+      image: "choisunguk/teamproject-backend-test"
+      tag: "0.0.7"
       
     steps:
       - uses: actions/checkout@v2
@@ -17,5 +17,11 @@ jobs:
       - name: change helm template
         run: |
           sed -i "s/__IMAGENAME__/${{ env.image }}/g" charts/values.yaml
-          sed -i "s/__TAG__/${{ env.image }}/g" charts/values.yaml
+          sed -i "s/__TAG__/${{ env.tag }}/g" charts/values.yaml
           cat charts/values.yaml
+      
+      # reference: https://github.com/helm/chart-releaser-action
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
