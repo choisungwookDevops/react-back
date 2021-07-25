@@ -18,3 +18,4 @@ jobs:
         run: |
           sed -i "s/__IMAGENAME__/${{ env.image }}/g" charts/values.yaml
           sed -i "s/__TAG__/${{ env.image }}/g" charts/values.yaml
+          cat charts/values.yaml
