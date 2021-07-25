@@ -32,7 +32,8 @@ jobs:
       - name: Copy config
         run: |
           mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+          echo ${{ secrets.KUBECONFIG }} > $HOME/.kube/config
+          echo ${{ secrets.KUBERNETES_APICA }} > $HOME/.kube/ca.crt
           
       - name: Deploy app
-        run: helm upgrade ${{ env.appname }} --install --namespace ${{ env.namespace }} --kube-ca-file=${{ secrets.KUBERNETES_APICA }} ./charts
+        run: helm upgrade ${{ env.appname }} --install --namespace ${{ env.namespace }} --kube-ca-file="$HOME/.kube/ca.crt" ./charts
