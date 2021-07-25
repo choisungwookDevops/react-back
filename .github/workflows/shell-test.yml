@@ -34,4 +34,4 @@ jobs:
           echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
           
       - name: install helm
-        run: helm upgrade --install -n ${{ secrets.namespace }} ${{ secrets.appname }}
+        run: helm upgrade ${{ secrets.appname }} --install --namespace ${{ secrets.namespace }}
