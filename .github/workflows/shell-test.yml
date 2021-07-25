@@ -11,6 +11,8 @@ jobs:
       author: "choisunguk"
       image: "teamproject-backend-test"
       tag: "0.0.7"
+      namespace: "inflearn-prod"
+      appname: "github-action"
       
     steps:
       - uses: actions/checkout@v2
@@ -19,7 +21,6 @@ jobs:
         run: |
           sed -i "s/__IMAGENAME__/${{ env.author }}\/${{ env.image }}/g" charts/values.yaml
           sed -i "s/__TAG__/'${{ env.tag }}'/g" charts/values.yaml
-          cat charts/values.yaml
       
       # reference: https://github.com/helm/chart-releaser-action
       - name: Install Helm
@@ -31,7 +32,6 @@ jobs:
         run: |
           mkdir -p $HOME/.kube
           echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
-          head -1 $HOME/.kube/config
           
-      - name: run kubeconfig
-        run: kubectl
+      - name: install helm
+        run: helm upgrade --install -n ${{ secrets.namespace }} ${{ secrets.appname }}
