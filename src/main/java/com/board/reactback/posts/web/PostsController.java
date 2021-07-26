@@ -27,6 +27,11 @@ public class PostsController {
         return postsService.findAll();
     }
 
+    @GetMapping("/helloworld")
+    public String hellworld(){
+        return "hello world";
+    }
+
     @PostMapping("/api/posts")
     public Long insert(@RequestBody Posts posts) {
         return postsService.save(posts);
