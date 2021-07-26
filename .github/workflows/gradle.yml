@@ -80,11 +80,11 @@ jobs:
         file: ./Dockerfile
         platforms: linux/amd64
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_IMAGENAME }}:${{ env.RELEASE_VERSION }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_IMAGENAME }}:${{ env.RELEASE_VERSION }}
 
     - name: change helm template(docker image version)
       run: |
-        sed -i "s/__IMAGENAME__/${{ secrets.DOCKERHUB_USERNAME }}\/${{ env.DOCKERHUB_IMAGENAME }}/g" charts/values.yaml
+        sed -i "s/__IMAGENAME__/${{ secrets.DOCKERHUB_USERNAME }}\/${{ secrets.DOCKERHUB_IMAGENAME }}/g" charts/values.yaml
         sed -i "s/__TAG__/${{ env.RELEASE_VERSION }}/g" charts/values.yaml
     
     # reference: https://github.com/helm/chart-releaser-action
